@@ -1,0 +1,2112 @@
+
+
+/* ==== TIPOGRAFIA CLASH GROTESK ==== */
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("font/ClashGrotesk-Light.otf") format("opentype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("font/ClashGrotesk-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Clash Grotesk";
+  src: url("font/ClashGrotesk-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+
+body {
+  font-family: "Clash Grotesk", "Founders Grotesk", sans-serif;
+  font-weight: 400;
+  color: #222;
+  line-height: 1;
+  overflow-x: hidden;
+  padding-top:40px;
+  background: #f5f6f7;
+}
+
+h1, h2, h3 {
+  font-weight: 500;
+  line-height: 1;
+}
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+
+/* ======= HEADER STILE ============= */
+
+header {
+  width: 98%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
+
+  /* sfondo trasparente + blur */
+  background: #f5f6f799;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+
+
+
+.header-container {
+  width: 100%;
+  margin: 0;
+  padding: 0 2.9rem; 
+  height: 95px;   
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5rem;        /* aumenta la distanza tra logo e nav */
+}
+
+.logo {
+  flex-shrink: 0;
+  margin-left: 2.1rem;
+}
+
+.logo img {
+  height: 75px;   
+  width: auto;
+  display: block;
+}
+
+
+.header-content {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5.8rem; /* distanza tra nav e search */
+}
+
+
+
+/* NAVIGATION — EFFETTO GOCCIA ORGANICA */
+
+/* Struttura base */
+header nav ul {
+  position: relative;
+  list-style: none;
+  display: flex;
+  gap: 2px;
+  margin-left: 6rem; 
+  padding: 0;
+}
+
+/* Link */
+header nav a {
+  text-decoration: none;
+  color: #3c3c3c;
+  font-weight: 500;
+  padding: 12px 22px; 
+  font-size: 1.2rem; 
+  position: relative;
+  z-index: 2;
+  transition: color 0.3s ease;
+}
+
+header nav a:hover {
+  color: #1d1d1d;
+}
+
+header nav a.is-active {
+  color: #f5f6f7;
+}
+
+
+
+/* -------- INDICATORE A GOCCIA --------------------- */
+
+.nav-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+
+  /* dimensioni iniziali della goccia rettangolare */
+  height: 30px;
+  width: 10px;
+
+  background: #bccd49;
+  opacity: 30%;
+  pointer-events: none;
+
+  /* rettangolare con angoli morbidi */
+  
+
+  /* rimosso blur per renderlo nitido */
+  filter: none;
+  backdrop-filter: none;
+
+  transform: translateY(-50%) translateX(0) scaleX(1);
+  transform-origin: left center;
+
+  transition:
+    transform 0.45s cubic-bezier(.22,1,.16,1),
+    width 0.4s cubic-bezier(.22,1,.16,1),
+    border-radius 0.10s ease,
+    opacity 0.20s ease;
+}
+
+/* fase intermedia — si espande come un fluido che riempie */
+.nav-indicator.filling {
+  width: 10px;
+  border-radius: 20px;
+}
+
+/* forma finale — materia organica stabilizzata nel nuovo tab */
+.nav-indicator.full {
+  border-radius: 999px;
+}
+
+
+
+
+/* --- BARRA DI RICERCA MINIMALE --- */
+.search-bar {
+  margin-left: auto; 
+  display: flex;
+  align-items: center;
+}
+
+
+.search-bar input {
+  font-family: "Clash Grotesk", "Founders Grotesk", sans-serif;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: #cccccc;               
+  padding: 0.1rem ;
+  width: 140px;
+  transition: all 0.25s ease;
+  border-radius: 5px;
+  
+}
+
+
+.search-bar input:hover {
+  color: #353535;
+  cursor: text;
+}
+
+
+.search-bar input:focus {
+  color: #494949;
+  border-bottom-color: #1a1a1a;
+}
+
+/* Placeholder (testo "Cerca...") */
+.search-bar input::placeholder {
+  color: #323232;
+  opacity: 1;
+  transition: color 0.25s ease;
+}
+
+.search-bar input:hover::placeholder,
+.search-bar input:focus::placeholder {
+  color: #c4c4c4;
+}
+
+
+
+
+
+
+
+
+
+
+/* ======= SEZIONE PRESENTAZIONE VIDEO MOCKUP ============= */
+
+
+
+.presentazione {
+  width: 100%;
+  height: auto;         
+  padding-bottom: 25px; 
+}
+
+
+
+.presentazione-media {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  margin: 20px auto;
+  max-width: 75vw;
+  max-height: 75vh;
+  aspect-ratio: 16 / 9;
+
+  overflow: hidden;
+}
+
+/* VIDEO RESPONSIVE – CROP PERFETTO */
+.presentazione-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.presentazione-testo {
+  margin-top: 75px;     
+  padding-left: 85px;  
+  padding-right: 10px;  /* permette al testo di estendersi a destra */
+}
+
+
+.presentazione-testo h1 {
+  font-size: 3.6rem;
+  font-weight: 500;
+  line-height: 0.9;
+  max-width: 98%;
+  letter-spacing: -2px;
+  color:#232323;
+  padding-bottom: 100px;
+}
+
+.presentazione-testo h1 .highlight {
+  background-color:  #bccd49;
+  font-weight: 500;
+  color: #1d1d1d;
+}
+
+
+.hover-word {
+  position: relative;
+  display: inline-block;
+  transition: none;
+  padding: 0 2px;
+}
+
+.hover-word.active-highlight {
+
+  background: #cde150;
+  color:#f5f6f7;
+  transition: none;
+}
+
+
+
+/* ==========  CHI SIAMO — HOMEPAGE ================== */
+
+.chi-siamo {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  padding: 40px 85px 80px;
+  background-color: #f4f4f4;
+
+
+    /* sfondo trasparente + blur */
+  background: #f5f6f799;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.chi-sinistra h2 {
+  font-size: 2.8rem !important;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+}
+
+.chi-destra p {
+  font-size: 2rem;
+  line-height: 1;
+  color: #2b2b2b;
+  max-width: 100%;
+  hyphens: none !important;
+}
+
+/* ===================== OBIETTIVI SECTION ======================= */
+
+/* ================== OBJECTIVES SLIDER ================== */
+
+.obiettivi-section {
+  padding: 80px 85px 0;
+}
+
+.obiettivi-header h2 {
+  font-size: 2.8rem !important;
+  margin-bottom: 100px;
+}
+
+/* Contenitore slider */
+.obiettivi-slider {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Bottoni freccia */
+.obiettivi-arrow {
+  border: none;
+  background: transparent;
+  font-size: 6rem !important;
+  line-height: 1;
+  cursor: pointer;
+  padding: 20px;
+  color: #1e1e1e;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.obiettivi-arrow:hover {
+  transform: scale(1.3);
+  opacity: 0.7;
+}
+
+/* Finestra visibile */
+.obiettivi-viewport {
+  overflow: hidden;
+  flex: 1;
+}
+
+/* Track scorrevole */
+.obiettivi-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.6s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Singolo obiettivo (slide) */
+.obiettivo-slide {
+  min-width: 100%;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+/* Numero a sinistra */
+.ob-num {
+  font-size: 10rem;
+  font-weight: 500;
+  color: #353535;
+  flex-shrink: 0;
+  padding-top: 70px;
+}
+
+/* Testo a destra */
+.ob-text {
+  font-size: 3rem;
+  line-height: 0.85;
+  max-width: 90%;
+  padding-top: 70px;
+  padding-left: 50px;
+}
+
+
+
+/* ========= SEZIONI — TRANSIZIONE ELEGANTE ================ */
+
+
+/* Di base: tutte le sezioni sono sovrapposte e nascoste */
+.section {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 0 !important;
+  overflow: hidden !important;
+
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+
+  transition:
+    opacity 0.8s cubic-bezier(.25,.46,.45,.94),
+    transform 0.8s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Sezione visibile (quella con .is-active) → torna nel flow e scrolla normalmente */
+
+.section.is-active {
+  position: relative;
+  height: auto !important;
+  overflow: visible !important;
+
+  opacity: 1;
+  transform: translateY(0);
+
+  pointer-events: auto;
+  padding-top: 120px !important; 
+}
+
+/* opzionale, se in futuro userai .is-exiting */
+.section.is-exiting {
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+}
+
+
+.section h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-secondary {
+  display: inline-block;
+  margin-top: 0.5rem;
+  background: #111;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: #333;
+}
+
+
+/* ========= SELECTED WORK — FIGMA LAYOUt ============ */
+
+.selected-work {
+  width: 100%;
+  padding: 120px 85px 0; 
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 120px;
+  row-gap: 20px;
+  margin-bottom: 300px;
+  margin-left: 0px;
+}
+
+/* Titolo a sinistra */
+.selected-work .left-title {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.left-title h2 {
+  font-size: 3rem;
+  font-weight: 500;
+  line-height: 1;
+  margin: 0;
+}
+
+/* Box grande a destra */
+.selected-work .preview-box {
+  grid-column: 2 / 3;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 670px;
+  border-radius: 1px;
+  overflow: hidden;
+  background: #dcdcdc;
+  position: relative;
+}
+
+
+.preview-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.preview-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  
+}
+
+.preview-slide.active {
+  opacity: 1;
+}
+
+/* Descrizione sotto il box */
+.selected-work .work-desc {
+  grid-column: 2 / 3;
+  grid-row: 2 / 4;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: #2c2c2c;
+  max-width: 100%;
+}
+
+/* View all sotto descrizione */
+.selected-work .view-all-btn {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+  font-size: 2rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e1e1e;
+  margin-top: 1px;
+  display: inline-block;
+}
+
+
+
+/* ============= FOOTER LOGO MARQUEE =============================== */
+
+.big-footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  padding-bottom: 20px;
+}
+
+.footer-marquee {
+  width: 100%;
+  overflow: hidden;
+}
+
+.footer-track {
+  display: flex;
+  width: max-content;
+  animation: footerScroll 20s linear infinite;
+  gap: 40px;
+}
+
+.big-footer-logo {
+  width: 1200px;
+  max-width: none;
+  opacity: 0.95;
+  pointer-events: none;
+}
+  
+@keyframes footerScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+
+
+/* ============ CONTACT FOOTER ============ */
+
+.contact-footer {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 85px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 100px;
+  background: #f5f6f7;
+  border-top: 1px solid #cfcfcf;
+  font-size: 1rem;
+  line-height: 1.3;
+  font-weight: 400;
+  color: #333;
+}
+
+.contact-footer .contact-col h3 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #1e1e1e;
+  line-height: 3;
+}
+
+.contact-footer .contact-col a {
+  display: block;
+  text-decoration: none;
+  color: #4a4a4a;
+  margin-bottom: 2px;
+  transition: color 0.25s ease;
+}
+
+.contact-footer .contact-col a:hover {
+  color: #1e1e1e;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ======== GESTIONE SEZIONE PROGETTi ============== */
+/* ================ GRID PROGETTI (4 col) ======================= */
+
+
+
+
+.progetti-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;          /* allineato in alto come pubblicazioni */
+  padding: 120px 85px 70px;         /* identico alla sezione pubblicazioni */
+  margin-bottom: 25px;
+}
+
+
+.progetti-titolo {
+  font-size: 3.4rem !important;     /* identico a pubblicazioni */
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+/* ========= SOTTOTITOLO PROGETTI  ========= */
+
+.progetti-sottotitolo {
+  font-size: 3.4rem;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 1px 0 80px 0;
+  padding-left: 85px; /* stesso allineamento della presentazione */
+  max-width: 100%;
+  
+}
+
+
+
+.progetti-filtri {
+  position: relative;
+  padding: 0; /* remove duplicated padding */
+}
+
+
+.progetti-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 2.5rem;                            
+  padding: 0 80px 200px;               
+}
+
+/* CARD */
+.progetto-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* BOX QUADRATO */
+.progetto-media {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #eee;
+  overflow: hidden;
+  position: relative;
+}
+
+.progetto-media img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: ease;
+}
+
+.progetto-media img:first-child {
+  opacity: 1;
+}
+
+
+/* ===== TAG ACRONIMO NEL BOX PROGETTO ===== */
+
+.progetto-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  height: auto;
+
+  background: rgba(255, 255, 255, 0.354);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  padding: 10px 16px;
+
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: #1e1e1e;
+
+  pointer-events: none;
+  z-index: 10;
+
+  display: flex;
+  align-items: center;
+}
+
+
+
+
+/* TESTI SOTTO — interlinea ridotta */
+
+
+.progetto-acronimo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 10px;
+  color: #1b1b1b;
+  line-height: 1;
+}
+
+.progetto-titolo {
+  font-size: 1.4rem;
+  color: #1e1e1e;
+  margin-top: 12px;
+  line-height: 1.1;
+  text-transform: none;
+}
+
+.progetto-finanziamento {
+  font-size: 0.9rem;
+  color: #777;
+  margin-top: 5px;
+  line-height: 1;
+}
+
+.progetto-anno {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #303030;
+  margin-top: 6px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  
+
+
+}
+
+
+
+
+
+
+
+/* ==== FILTRI ORIZZONTALI — SEZIONE PROGETTI ==== */
+
+.progetti-filtri {
+  padding-left: 85px;
+  padding-right: 85px;
+  margin-top: 0px;  /* avvicina ai sottotitoli */
+  margin-bottom: 60px;
+  position: sticky;
+}
+
+.progetti-filtri .filtri-list {
+  display: flex;
+  flex-direction: row;
+  align-items: right;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.progetti-filtri .filtro {
+  
+  font-size: 1rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid #f5f6f799;
+  padding: 5px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: #505050;
+  transition: 
+    background .25s ease,
+    color .25s ease,
+    border-color .25s ease;
+}
+
+.progetti-filtri .filtro.active {
+  background: #c7d65f;
+  color: #f1f1f1;
+}
+
+
+
+
+
+/* ========================== SEZIONE DETTAGLIO PROGETTO ===================================== */
+/* --- DETTAGLIO PROGETTO --- */
+
+.progetto-dettaglio {
+  padding: 120px 85px 300px;
+}
+
+/* --- DETTAGLIO PROGETTO --- */
+
+.progetto-hero {
+  position: relative;
+  padding-top: 60px;
+  margin-bottom: 20px;
+}
+
+.progetto-hero .progetto-acronimo {
+  font-size: 4.5rem;
+  font-weight: 600;
+  line-height: 0.85; /* riduce interlinea */
+  margin: 40px 0 0 0; /* abbassa il punto di inizio */
+  padding: 0;
+}
+
+.progetto-hero .progetto-titolo-specifico {
+  font-size: 2rem !important;
+  line-height: 0.90 !important; 
+  margin-top: 8px; 
+  max-width: 80%;
+}
+
+/* VIDEO ABSOLUTE */
+.progetto-logo-absolute {
+  position: absolute;
+  top: 70px;
+  right: 0;
+  width: 135px;
+  height: 135px;
+  background: #ddd;
+  overflow: hidden;
+  border-radius: 0;
+  pointer-events: none;
+
+}
+
+.progetto-logo-absolute video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.progetto-meta {
+  margin: 25px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.progetto-anno-big {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #1e1e1e;
+}
+
+.progetto-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.progetto-tag-pill {
+  font-size: 1rem;
+  padding: 4px 10px;
+  background: #c5d55d;
+  color: #fbfbfb;
+  border-radius: 0px;  
+  font-weight: 500;
+}
+
+.placeholder-rect {
+  width: 100%;
+  height: 420px;
+  background: #dcdcdc;
+  border-radius: 2px;
+}
+
+
+/* HERO IMAGE */
+.progetto-cover {
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin: 80px 0; 
+}
+
+.progetto-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* SINOSSI */
+.progetto-sinossi {
+  font-size: 2.3rem;
+  line-height: 0.95;
+  color: #1e1e1e;
+  max-width: 105%;
+  margin-bottom: 60px;
+  font-weight: 500;
+  hyphens: none !important;
+}
+
+.progetto-divider {
+  border: none;
+  border-top: 0.5px solid #bfbfbf;
+  margin: 40px 0;
+}
+
+/* INFO A 3 COLONNE */
+.progetto-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 150px;
+  margin-bottom: 40px;
+}
+
+.info-col {
+  width: 100%;
+}
+
+.label {
+  font-weight: 500;
+  color: #3a3939;
+  font-size: 1.8rem;
+}
+
+.value {
+  margin-top: 5px;
+  line-height: 1.2;
+  font-size: 1.3rem;
+}
+
+/* GALLERY — GRID */
+
+.progetto-gallery {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)); /* per ora 3 colonne */
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+/* Ogni immagine è un riquadro responsive */
+.progetto-gallery img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;      /* rettangolo orizzontale */
+  object-fit: cover;
+  background: #dedede;      /* placeholder grigio */
+  display: block;
+}
+
+
+
+.progetto-gallery-2 {
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* per ora 3 colonne */
+  gap: 10px;
+  margin-bottom: 40px;
+}
+
+/* Ogni immagine è un riquadro responsive */
+.progetto-gallery-2 img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1 / 1;      /* rettangolo orizzontale */
+  object-fit: cover;
+  background: #dedede;      /* placeholder grigio */
+  display: block;
+}
+
+
+/* ============    VIDEO PROGETTO   ===================== */
+
+.progetto-video-wrapper {
+  width: 100%;
+  padding: 0 85px;             
+  box-sizing: border-box;
+  margin: 60px 0;              
+}
+
+.progetto-video {
+  width: 100%;
+  aspect-ratio: 16 / 9;        
+  overflow: hidden;
+  border: 1px solid #cfcfcf;    
+  position: relative;
+}
+
+.progetto-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;       
+  display: block;
+  border-radius: 0;
+}
+
+
+
+/* PUBBLICAZIONI */
+
+.progetto-pubblicazioni {
+  margin-top: 200px;
+}
+
+.progetto-pub-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.progetto-pub-item {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc;
+  text-decoration: none;
+  padding: 25px 40px 10px 0px;
+}
+
+.progetto-pub-text {
+  font-size: 1.4rem;
+  line-height: 1.2;
+  color: #666;
+  max-width: 80%;
+}
+
+.progetto-pub-item:hover .progetto-pub-text {
+  color: #1e1e1e;
+}
+
+.progetto-pub-arrow {
+  font-size: 1.2rem;
+  opacity: 0;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.progetto-pub-item:hover .progetto-pub-arrow {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.project-nav {
+  margin-top: 120px;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  border-top: 1px solid #d9d9d9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.project-nav a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e1e1e;
+  transition: opacity .25s, transform .25s;
+}
+
+.project-nav a:hover {
+  opacity: .6;
+  transform: translateY(-2px);
+}
+
+
+
+/* ================  PUBBLICAZIONI — HEADER ===================== */
+
+.pubblicazioni-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 45;
+  margin-top: 10px;
+}
+
+.pubblicazioni-titolo {
+  font-size: 3.5rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+}
+
+/* FILTRI A DESTRA */
+.pub-filtri .filtri-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5px;
+}
+
+.pub-filtri .filtro {
+  font-size: 1rem;
+  padding: 2px 20px;
+  background: transparent;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: #2c2c2c;
+  line-height: 1;
+}
+
+.pub-filtri {
+  position: absolute;
+  right: -10px;
+  width: 10px;
+  height: 28px;
+  border-radius: 50px;
+  background: #bccd49;
+  opacity: 0.3;
+  transform: translateY(-50%);
+  transition: all .35s cubic-bezier(.22,1,.36,1);
+}
+
+
+/* =================== LISTA PUBBLICAZIONI ======================== */
+
+.pubblicazioni-list {
+  padding: 0 90px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Pubblicazioni come link esterni */
+.pub-item {
+  text-decoration: none;
+  color: inherit;          /* mantiene il colore del testo */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px 0;
+  border-bottom: 1px solid #dcdcdc;
+  transition: color .6s ease;
+}
+
+/* Contenitore sinistro (testo + pulsante + abstract) */
+.pub-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  
+}
+
+.pub-item:hover .pub-text {
+  color: #000 !important;
+}
+
+
+.pub-text {
+  font-size: 1.6rem;
+  line-height: 1.1;
+  max-width: 80%;
+  color: #888;
+}
+
+
+.pub-arrow {
+  opacity: 0;
+  font-size: 1.3rem;
+  transition: opacity .25s ease, transform .25s ease;
+}
+
+.pub-item:hover .pub-arrow {
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+
+
+/* ================= BIBLIOGRAFIA ================ */
+
+.bibliografia-header {
+  padding: 120px 85px 20px;
+}
+
+.bibliografia-header h3 {
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.bibliografia-list {
+  padding: 0 85px 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.biblio-item {
+  padding: 20px 400px 20px 0px;
+  font-size: 1.2rem;
+  border-bottom: 0.4px solid #dcdcdc;
+  color: #444;
+}
+
+
+
+
+/* Pulsante Abstract */
+.abstract-toggle {
+  background:#f5f6f7; ;
+  border: 0.5px solid #f5f6f7;
+  padding: 4px 20px;
+  font-size: 1.1rem;
+  
+  font-weight: 600;
+  color: #676767;       /* testo fisso, NON cambia */
+  border-radius: 999px;
+  width: fit-content;
+  cursor: pointer;
+  transition: 
+    background .4s ease,
+    color .4s ease,
+    border-color .4s ease;
+}
+
+.abstract-toggle:hover {
+  color: #1a1a1a;
+}
+
+/* Stato attivo → verde + testo bianco */
+.abstract-toggle.active {
+  background: #97b732;
+  color: #ffffff !important;
+  border-color: #97b732;
+    border-radius: 999px;
+}
+
+/* --- SLIDE-DOWN MORPHING EFFECT --- */
+
+.abstract-content {
+  max-height: 0;
+  max-width: 50%;
+  text-align: justify;
+  hyphens: auto;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition:
+    max-height .8s cubic-bezier(.22,1,.36,1),
+    opacity .45s ease,
+    transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+.abstract-content.open {
+  max-height: 600px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
+
+
+
+/* ================= TEAM — HEADER ================== */
+.team-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 25px;
+  
+}
+
+/* TITOLO TEAM */
+.team-titolo {
+  font-size: 3.25rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+/* SOTTOTITOLO TEAM */
+.team-sottotitolo {
+  font-size: 3.2rem;
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 0;  
+  padding-left: 85px;
+  max-width: 100%;
+  
+}
+
+
+
+.team-coordinator-block {
+   padding: 300px 85px 0px;  
+}
+
+.team-section-title {
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  padding-bottom: 20px;
+}
+
+.coordinator-card {
+  width: 313px;
+}
+
+.team-coordinator-divider {
+  width: calc(100% - 170px); /* perfetto allineamento con contenuto */
+  margin: 40px auto 60px auto;
+  border: none;
+  border-top: 1px solid #dcdcdc;
+}
+
+
+
+/* ================= TEAM GRID ================== */
+
+
+.team-grid {  
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);  /* 4 elementi per riga */
+  gap: 2rem;                             /* stesso gap dei progetti */
+  padding: 0 80px 200px;                   /* stesso padding progetti */
+  padding-top: 35px;
+}
+
+/* CARD */
+.team-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* FOTO QUADRATA (uguale ai progetti) */
+.team-photo {
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #eee;
+  overflow: hidden;
+  position: relative;
+}
+
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity .4s ease, transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+
+
+/* ===== TAG TEAM OVERLAY (come acronimo progetti ma solo on hover) ===== */
+
+.team-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.052);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color:#def356; 
+  font-size: 2.2rem;
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition:
+    opacity .35s cubic-bezier(.22,1,.36,1),
+    transform .35s cubic-bezier(.22,1,.36,1);
+}
+
+/* hover effect */
+.team-card:hover .team-tag {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HOVER stile progetti */
+.team-card:hover .team-photo img {
+  transform: scale(1.03);
+  opacity: 0.95;
+}
+
+/* TESTI — stile identico alle card progetti */
+.team-info .team-name {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 10px;
+  line-height: 1;
+}
+
+.team-info .team-role {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1;
+  margin-top: 4px;
+  margin-bottom: 30px;
+}
+
+
+/* ================ PARTNER — HEADER. ==================== */
+
+.partner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 25px;
+}
+
+.partner-titolo {
+  font-size: 3.4rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+.partner-sottotitolo {
+  font-size: 3.4rem   !important;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 0;
+  padding-left: 85px;
+  max-width: 100%;
+}
+
+/* =============  PARTNER — GRID =================== */
+
+
+.partner-grid {
+  padding: 0 85px 150px;
+  display: grid;
+  justify-content: center; /* centra la griglia */
+  grid-template-columns: repeat(auto-fill, 200px); /* OGNI BOX È SEMPRE 200PX */
+  gap: 50px;
+}
+
+.partner-box {
+  width: 200px;
+  height: 200px;  /* dimensione massima e fissa */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* per evitare overflow delle immagini */
+}
+
+.partner-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* mantiene il logo dentro */
+}
+
+
+
+/* ===== ZOOM MORBIDO LOGHI PARTNER ===== */
+
+.partner-box {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 18px;
+  background: #f7f7f7;
+  transition: transform .25s cubic-bezier(.22,1,.36,1);
+}
+
+.partner-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform .35s cubic-bezier(.22,1,.36,1);
+}
+
+/* Hover effect (zoom leggerissimo) */
+.partner-box:hover img {
+  transform: scale(1.06);
+  opacity: 0.95;
+}
+
+
+
+
+
+/* ====================== TEAM DETTAGLIO (SINGOLO PROFILO) ====================== */
+
+.team-dettaglio {
+  padding: 180px 85px 250px;
+}
+
+/* HERO — STRUTTURA SIMILE ALLE PAGINE PROGETTO */
+.team-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 100px;
+  margin-bottom: 20px;
+}
+
+.team-hero-left {
+  flex: 1;
+}
+
+.team-nome {
+  font-size: 4.5rem;
+  font-weight: 500;
+  line-height: 0.9;
+  margin: 0;
+}
+
+.team-ruolo {
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-top: 12px;
+  line-height: 1;
+  color: #1f1f1f;
+}
+
+.team-meta {
+  margin-top: 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.team-email,
+.team-orcid,
+.team-website {
+  font-size: 1.2rem;
+  color: #1e1e1e;
+  text-decoration: none;
+  transition: opacity .25s;
+}
+
+.team-email:hover,
+.team-orcid:hover,
+.team-website:hover {
+  opacity: 0.6;
+}
+
+.team-tags {
+  display: flex;
+  gap: 10px;
+}
+
+.team-tag-pill {
+  font-size: 1rem;
+  padding: 4px 12px;
+  background: #c7d65f;
+  color: #fefefe;
+  border-radius: 0px;
+  font-weight: 500;
+}
+
+/* FOTO PROFILO */
+.team-hero-photo {
+  width: 270px;
+  height: 270px;
+  background: #e3e3e3;
+  overflow: hidden;
+  border-radius: 0px;
+  flex-shrink: 0;
+}
+
+.team-hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* DIVIDER */
+.team-divider {
+  border: none;
+  border-top: 0.8px solid #cfcfcf;
+  margin: 50px 0;
+}
+
+/* BIO */
+.team-bio {
+  font-size: 1.4rem;
+  line-height: 1.15;
+  max-width: 80%;
+  color: #141414;
+  margin-bottom: 60px;
+}
+
+/* LISTA CORSI */
+.team-corsi h3 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.team-corsi ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.team-corsi li {
+  font-size: 1.3rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+/* NAV FINALE */
+.team-nav {
+  margin-top: 120px;
+  padding-top: 40px;
+  border-top: 1px solid #dcdcdc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.team-nav a {
+  font-size: 1.4rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #1e1e1e;
+  transition: opacity .25s, transform .25s;
+}
+
+.team-nav a:hover {
+  opacity: .6;
+  transform: translateY(-2px);
+}
+
+
+
+
+
+
+
+/* ================   SERVICE SECTION  ======================= */
+
+
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.service-title {
+  font-size: 3.4rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+.service-intro {
+  font-size: 3.3rem !important;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 0;
+  padding-left: 85px;
+  max-width: 100%;
+}
+
+
+.service-content {
+  padding: 0 85px;
+  width: 100%;
+}
+
+.service-block {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 100px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* ======= SERVICE MEDIA TAG (overlay stile progetti) ======= */
+
+.service-media {
+  width: 65%;
+  aspect-ratio: 4/3;
+  position: relative;
+  overflow: hidden;
+  background: #dcdcdc;
+  border: 1px solid #cfcfcf;
+}
+
+
+
+.service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* TAG in overlay (identico ai progetti) */
+.service-tag {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  
+  padding: 14px 20px;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  font-size: 3.8rem;
+  font-weight: 500;
+  color:#1e1e1e;
+  pointer-events: none;
+  z-index: 10;
+}
+
+
+
+
+
+.service-text {
+  width: 35%;
+}
+
+.service-text h3 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.service-text p {
+  font-size: 1.3rem;
+  line-height: 0.95;
+  margin-bottom: 12px;
+  
+}
+
+
+
+
+/* ============== FACILITIES ==================== */
+
+/* HEADER (lasciarlo così com'è) */
+.facilities-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 25px;
+}
+
+.facilities-title {
+  font-size: 3.3rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+.facilities-intro {
+  font-size: 3.3rem !important;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 0;
+  padding-left: 85px;
+  max-width: 100%;
+}
+
+/* WRAPPER per contenuto */
+.facilities-content {
+  padding: 0 85px;
+  width: 100%;
+}
+
+/* Ogni facility è un blocco verticale */
+.facility-block {
+  width: 100%;
+  margin-bottom: 100px;
+}
+
+/* ===================== SLIDER AUTO 16:9 ===================== */
+
+.facility-media {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  position: relative;
+  background: #dcdcdc;
+  border: 1px solid #cfcfcf;
+}
+
+.facility-slider {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s cubic-bezier(.25,.46,.45,.94);
+}
+
+/* Ogni immagine è full-size */
+.facility-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex-shrink: 0; /* impedisce la compressione */
+}
+
+
+
+/* ===================== TESTO ===================== */
+
+.facility-text {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.facility-text h3 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+  color: #1e1e1e;
+  line-height: 1;
+}
+
+.facility-text p {
+  font-size: 2rem;
+  line-height: 1;
+  margin-bottom: 12px;
+  color: #1e1e1e;
+}
+
+/* LINEA DI SEPARAZIONE SOTTO OGNI FACILITY */
+
+.facility-divider {
+  border: none;
+  border-top: 1px solid #dcdcdc;
+  margin-top: 60px;
+}
+
+
+
+
+/* LOADER STYLES */
+
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #f5f6f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  
+}
+
+#loader.fade-out {
+  opacity: 0;
+}
+
+#loaderVideo {
+  max-width: 50vw;
+  width: 300px;
+  height: auto;
+}
+
+
+
+
+
+
+
+
+/* ======== FOOTER GLOBALE ======== */
+
+.footer-global {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 5;
+}
+
+/* Nascondi i footer solo nelle pagine di dettaglio */
+body.is-detail .contact-footer,
+body.is-detail .big-footer {
+  display: none !important;
+}
+
+/* Nascondi i footer solo nelle pagine di dettaglio */
+body.is-detail .contact-footer,
+body.is-detail .big-footer {
+  display: none !important;
+}
+
+
+
+
+
+
+
+/* ================= CONTACT SECTION ================= */
+
+.contact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 120px 85px 70px;
+  margin-bottom: 40px;
+}
+
+.contact-title {
+  font-size: 3.3rem !important;
+  font-weight: 500;
+  margin: 0;
+  line-height: 0.9;
+  color: #1e1e1e;
+}
+
+.contact-intro {
+  font-size: 3.3rem !important;
+  font-weight: 500;
+  line-height: 0.88;
+  letter-spacing: -2px;
+  color: #1e1e1e;
+  margin: 0;
+  padding-left: 85px;
+  max-width: 100%;
+}
+
+/* FORM AREA */
+.contact-form {
+  max-width: 800px;
+  margin: 0 auto 80px auto;
+  padding: 0 85px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.form-row {
+  display: flex;
+  gap: 25px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 18px 20px;
+  border: 0.5px solid #ccc;
+  font-size: 1.1rem;
+  font-family: inherit;
+}
+
+.contact-form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+.contact-submit {
+  width: fit-content;
+  background: #bccd49;
+  color: #f7f7f7;
+  border: none;
+  padding: 14px 32px;
+  font-weight: 500;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-submit:hover {
+  background: #97b732;
+}
+
+/* INFO GRID */
+.contact-info-grid {
+  padding: 0 85px 120px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.contact-info-block {
+  min-width: 220px;
+}
+
+.contact-info-block h3 {
+  margin-bottom: 6px;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.contact-info-block a {
+  color:#1e1e1e;
+  text-decoration: underline;
+}
+
+.contact-info-block p {
+  margin: 5px 0 0 0;
+  line-height: 1.4;
+}
+
+/* ========== LAYOUT MIGLIORATO A DUE COLONNE ========== */
+
+.contact-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+  padding: 0 85px 120px;
+  max-width: 1500px;
+  margin: 0 auto;
+  margin-top: 40px; 
+}
+
+.contact-info-left {
+  flex: 0 0 32%;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+  padding-top: 10px; 
+}
+
+.contact-form {
+  flex: 0 0 65%;
+  max-width: none;
+  padding: 0;
+}
